@@ -33,23 +33,23 @@ export default async function RootLayout({
           <div className="animated-background-overlay" aria-hidden="true" />
           <AuthProvider>
             <SidebarProvider defaultOpen={defaultOpen}>
-              {/* Z-Index stacking context wrapper */}
-              <div className="relative z-0">
-                <AppSidebar />
-                <SidebarInset>
-                  {/* Header stays above sidebar */}
-                  <header className="relative z-10 flex h-16 shrink-0 items-center gap-2 border-b px-4">
-                    <SidebarTrigger className="lg:hidden" />
-                    <h1 className="text-3xl font-extrabold text-primary tracking-tight">TaskZen</h1>
-                  </header>
+  <div className="flex min-h-screen">
+    <AppSidebar />
+    <div className="flex-1 flex flex-col">
+      <SidebarInset>
+       <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+  <SidebarTrigger className="lg:hidden" /> {/* 👈 ADD THIS */}
+  <h1 className="text-3xl font-extrabold text-primary tracking-tight">TaskZen</h1>
+</header>
 
-                  {/* Main content area */}
-                  <main className="flex-1 max-w-7xl mx-auto w-full px-4 md:px-6 pb-6">
-                    {children}
-                  </main>
-                </SidebarInset>
-              </div>
-            </SidebarProvider>
+        <main className="flex-1 max-w-7xl mx-auto w-full px-4 md:px-6 pb-6">
+          {children}
+        </main>
+      </SidebarInset>
+    </div>
+  </div>
+</SidebarProvider>
+
           </AuthProvider>
           <Toaster position="top-center" />
         </ThemeProvider>
