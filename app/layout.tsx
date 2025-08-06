@@ -4,7 +4,7 @@ import { Inter } from "next/font/google"
 import { cookies } from "next/headers"
 import { Toaster } from "react-hot-toast"
 
-import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar" // Removed SidebarTrigger import
+import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
 import { ThemeProvider } from "@/components/theme-provider"
 import { AuthProvider } from "@/context/Auth/AuthContext"
@@ -30,20 +30,25 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {/* Animated background overlay */}
           <div className="animated-background-overlay" aria-hidden="true" />
           <AuthProvider>
             <SidebarProvider defaultOpen={defaultOpen}>
-              <AppSidebar />
-              <SidebarInset>
-                <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-                  {/* "TaskZen" title on the dashboard top */}
-                  <h1 className="text-3xl font-extrabold text-primary tracking-tight">TaskZen</h1>
-                  {/* Other header content can go here */}
-                </header>
-                {/* The children (page content) will be rendered inside this div */}
-                <div className="flex-1 max-w-7xl mx-auto w-full px-4 md:px-6 pb-6">{children}</div>
-              </SidebarInset>
+              {/* Z-Index stacking context wrapper */}
+              <div className="relative z-0">
+                <AppSidebar />
+                <SidebarInset>
+                  {/* Header stays above sidebar */}
+                  <header className="relative z-10 flex h-16 shrink-0 items-center gap-2 border-b px-4">
+                    <SidebarTrigger className="lg:hidden" />
+                    <h1 className="text-3xl font-extrabold text-primary tracking-tight">TaskZen</h1>
+                  </header>
+
+                  {/* Main content area */}
+                  <main className="flex-1 max-w-7xl mx-auto w-full px-4 md:px-6 pb-6">
+                    {children}
+                  </main>
+                </SidebarInset>
+              </div>
             </SidebarProvider>
           </AuthProvider>
           <Toaster position="top-center" />
@@ -52,4 +57,3 @@ export default async function RootLayout({
     </html>
   )
 }
-
