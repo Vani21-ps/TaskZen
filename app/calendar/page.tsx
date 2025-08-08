@@ -23,9 +23,9 @@ export default function CalendarPage() {
   }
 
   return (
-    <div className="container mx-auto py-8 h-[calc(100vh-100px)] flex flex-col">
-      <h1 className="text-3xl font-bold mb-6">My Calendar</h1>
-      <div className="flex-1">
+    <div className="w-full min-h-screen flex justify-center items-start px-4 py-10">
+      <div className="w-full max-w-6xl">
+        <h1 className="text-3xl font-bold mb-6 text-center">My Calendar</h1>
         <CalendarView />
       </div>
     </div>

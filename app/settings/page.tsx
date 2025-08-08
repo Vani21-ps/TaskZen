@@ -2,7 +2,13 @@
 
 import type React from "react"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -46,9 +52,9 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-6">Settings</h1>
-      <Card className="max-w-lg">
+    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-64px)] px-4 py-8">
+      <h1 className="text-3xl font-bold mb-6 text-center">Settings</h1>
+      <Card className="w-full max-w-lg">
         <CardHeader>
           <CardTitle>Profile Settings</CardTitle>
           <CardDescription>Update your account information.</CardDescription>
@@ -76,7 +82,7 @@ export default function SettingsPage() {
                 disabled={isSaving}
               />
             </div>
-            <Button type="submit" disabled={isSaving}>
+            <Button type="submit" disabled={isSaving} className="w-full">
               {isSaving ? "Saving..." : "Save Changes"}
             </Button>
           </form>

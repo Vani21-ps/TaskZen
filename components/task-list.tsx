@@ -281,7 +281,8 @@ export function TaskList({ categoryFilter, onTaskChange }: TaskListProps) {
       ))}
 
       <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
-        <DialogContent className="sm:max-w-[425px] !bg-white dark:!bg-[--popover] !bg-opacity-100 !backdrop-blur-none z-[50]">
+      <DialogContent className="sm:max-w-[425px] bg-popover text-popover-foreground z-[50]">
+
           <DialogHeader>
             <DialogTitle>{editingTask ? "Edit Task" : "Create New Task"}</DialogTitle>
           </DialogHeader>

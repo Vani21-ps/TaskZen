@@ -166,7 +166,7 @@ export function AppSidebar() {
                             <DialogHeader>
                               <DialogTitle>Create New Task</DialogTitle>
                             </DialogHeader>
-                            <TaskForm onTaskCreated={handleTaskCreated} />
+                            <TaskForm onTaskChange={handleTaskCreated} />
                           </DialogContent>
                         </Dialog>
                       </SidebarMenuItem>

@@ -1,0 +1,108 @@
+/* Base calendar styling */
+.rbc-calendar {
+  width: 100% !important;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fffaf6;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Calendar view containers */
+.rbc-month-view,
+.rbc-time-view,
+.rbc-agenda-view,
+.rbc-time-content,
+.rbc-month-row {
+  width: 100%;
+  min-width: 100% !important;
+  border-radius: 10px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06) !important;
+  padding: 1rem !important;
+  background: #ffffff !important;
+}
+
+/* Show and style the toolbar */
+.rbc-toolbar {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #f5eae1; /* nude pink tone */
+  border-radius: 8px;
+}
+
+/* Toolbar buttons */
+.rbc-toolbar button {
+  background-color: #b66e51; /* warm brown-pink */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.rbc-toolbar button:disabled {
+  background-color: #e0e0e0;
+  color: #aaa;
+}
+
+.rbc-toolbar-label {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #4a3a3a; /* muted brown text */
+}
+
+/* Highlight today */
+.rbc-today {
+  background-color: #e9d8cd !important; /* nude pink shade */
+}
+
+/* Event styles */
+.rbc-event {
+  padding: 6px 8px;
+  font-size: 13px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* Priority-based event colors */
+.priority-High {
+  background-color: #ff4d4f;
+  color: white;
+}
+
+.priority-Medium {
+  background-color: #faad14;
+  color: black;
+}
+
+.priority-Low {
+  background-color: #52c41a;
+  color: white;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .rbc-month-view,
+  .rbc-time-view,
+  .rbc-agenda-view {
+    padding: 0.5rem !important;
+  }
+
+  .rbc-toolbar {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .rbc-toolbar-label {
+    font-size: 1rem;
+  }
+
+  .rbc-toolbar button {
+    padding: 4px 8px;
+    font-size: 14px;
+  }
+}

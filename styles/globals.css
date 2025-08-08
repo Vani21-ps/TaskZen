@@ -121,3 +121,23 @@
     @apply bg-background text-foreground;
   }
 }
+.rbc-calendar {
+  background-color: white;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+}
+
+.rbc-month-view {
+  width: 100%;
+}
+
+.rbc-time-view,
+.rbc-agenda-view {
+  width: 100%;
+}
+
+.rbc-header {
+  font-weight: 600;
+  text-align: center;
+}
