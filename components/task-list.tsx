@@ -201,11 +201,8 @@ export function TaskList({ categoryFilter, onTaskChange }: TaskListProps) {
             "opacity-70": task.status === "Completed",
           })}
         >
-          {task.status === "Completed" && (
-            <div className="absolute inset-0 bg-background/50 flex items-center justify-center rounded-lg z-10">
-              <span className="text-2xl font-bold text-green-500">COMPLETED</span>
-            </div>
-          )}
+        
+
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <div className="flex items-center gap-2">
               <Checkbox

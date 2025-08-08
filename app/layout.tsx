@@ -33,23 +33,27 @@ export default async function RootLayout({
           <div className="animated-background-overlay" aria-hidden="true" />
           <AuthProvider>
             <SidebarProvider defaultOpen={defaultOpen}>
-  <div className="flex min-h-screen">
-    <AppSidebar />
-    <div className="flex-1 flex flex-col">
-      <SidebarInset>
-       <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-  <SidebarTrigger className="lg:hidden" /> {/* 👈 ADD THIS */}
-  <h1 className="text-3xl font-extrabold text-primary tracking-tight">TaskZen</h1>
-</header>
+              <div className="flex min-h-screen w-full">
+                {/* Sidebar */}
+                <AppSidebar />
 
-        <main className="flex-1 max-w-7xl mx-auto w-full px-4 md:px-6 pb-6">
-          {children}
-        </main>
-      </SidebarInset>
-    </div>
-  </div>
-</SidebarProvider>
+                {/* Main content */}
+                <div className="flex-1 flex flex-col w-full">
+                  <SidebarInset>
+                    {/* Header */}
+                    <header className="flex h-16 shrink-0 items-center gap-2 border-b border-gray-300 px-4 w-full">
+                      <SidebarTrigger className="lg:hidden" />
+                      <h1 className="text-3xl font-extrabold text-primary tracking-tight">TaskZen</h1>
+                    </header>
 
+                    {/* Page Content */}
+                    <main className="flex-1 w-full px-4 md:px-6 pb-6">
+                      {children}
+                    </main>
+                  </SidebarInset>
+                </div>
+              </div>
+            </SidebarProvider>
           </AuthProvider>
           <Toaster position="top-center" />
         </ThemeProvider>
