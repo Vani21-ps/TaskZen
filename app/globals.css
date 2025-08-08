@@ -3,10 +3,13 @@
 @tailwind utilities;
 
 @import "react-big-calendar/lib/css/react-big-calendar.css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  font-family: 'Inter', sans-serif;
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -118,83 +121,97 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/50 transition-colors duration-200 ease-in-out;
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  a {
+    @apply text-accent hover:text-accent-foreground;
   }
 }
 
-/* Animated background overlay */
+/* Scrollbar tweaks */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+  border-radius: 999px;
+}
+
+/* Optional animated background */
 .animated-background-overlay {
   position: absolute;
   inset: 0;
-  z-index: 0; /* Ensure it's behind content */
-  background: none; /* Remove background colors */
+  z-index: 0;
+  background: linear-gradient(135deg, #fffaf6, #fceee3, #f8e6d1, #f0dbcb);
   background-size: 400% 400%;
-  animation: none; /* Remove animation */
-  opacity: 0; /* Make it completely transparent */
+  animation: gradientShift 15s ease infinite;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .dark .animated-background-overlay {
-  background: none; /* Remove background colors */
-  background-size: 400% 400%;
-  animation: none; /* Remove animation */
-  opacity: 0; /* Make it completely transparent */
+  background: linear-gradient(135deg, #1e1e1e, #2a2a2a, #333, #1f1f1f);
+  opacity: 0.06;
 }
 
-/* Custom styles for react-big-calendar */
+/* REACT BIG CALENDAR STYLES BELOW (unchanged) */
 .rbc-calendar {
-   margin: 0 auto;
+  margin: 0 auto;
   width: 100%;
   max-width: 100%;
 }
-
 .rbc-header {
   @apply text-muted-foreground font-semibold;
-  color: var(--foreground); /* Ensure header text is visible */
+  color: var(--foreground);
 }
-
 .rbc-month-view,
 .rbc-time-view {
   @apply border-border;
 }
-
 .rbc-row-content {
   @apply border-border;
 }
-
 .rbc-date-cell {
   @apply text-foreground;
-  color: var(--foreground); /* Ensure date numbers are visible */
+  color: var(--foreground);
 }
-
 .rbc-off-range-bg {
   @apply bg-muted/50;
 }
-
 .rbc-today {
   @apply bg-primary/10;
 }
-
 .rbc-event {
   @apply rounded-md text-xs px-1 py-0.5 overflow-hidden whitespace-nowrap text-ellipsis;
-  background-color: var(--rbc-event-bg, #3174ad); /* Default fallback */
+  background-color: var(--rbc-event-bg, #3174ad);
   color: white;
   border: none;
 }
-
-/* Priority-based event styling */
 .rbc-event.priority-High {
-  background-color: oklch(0.577 0.245 27.325); /* Destructive color */
+  background-color: oklch(0.577 0.245 27.325);
 }
 .rbc-event.priority-Medium {
-  background-color: oklch(0.828 0.189 84.429); /* Chart-4 color (yellowish) */
+  background-color: oklch(0.828 0.189 84.429);
 }
 .rbc-event.priority-Low {
-  background-color: oklch(0.646 0.222 41.116); /* Chart-1 color (greenish) */
+  background-color: oklch(0.646 0.222 41.116);
 }
-
 .dark .rbc-event.priority-High {
   background-color: oklch(0.396 0.141 25.723);
 }
@@ -204,32 +221,25 @@
 .dark .rbc-event.priority-Low {
   background-color: oklch(0.488 0.243 264.376);
 }
-
 .rbc-toolbar button {
   @apply bg-background text-foreground border border-input hover:bg-accent hover:text-accent-foreground px-3 py-1 rounded-md;
 }
-
 .rbc-toolbar button:active,
 .rbc-toolbar button.rbc-active {
   @apply bg-primary text-primary-foreground;
 }
-
 .rbc-toolbar button:focus {
   @apply ring-2 ring-ring ring-offset-2;
 }
-
 .rbc-toolbar-label {
   @apply text-lg font-semibold;
 }
-
 .rbc-agenda-view table {
   @apply w-full;
 }
-
 .rbc-agenda-view th {
   @apply text-left p-2 border-b border-border;
 }
-
 .rbc-agenda-view td {
   @apply p-2 border-b border-border;
 }
